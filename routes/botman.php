@@ -7,7 +7,7 @@ $botman->hears('Hi', function ($bot) {
     $bot->reply('Hello!');
 });
 
-$botman->hear('GET_STARTED', function($bot){
+$botman->hears('GET_STARTED', function($bot){
     $bot->reply("I am bot and you get started the service");
 });
 
