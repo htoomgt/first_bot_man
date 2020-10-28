@@ -11,7 +11,7 @@ return [
     | the messenger page / application on Facebook.
     |
     */
-    'token' => env('EAAOXilrf3fsBAFHAZCH40PpUQhEL5lkB9XtgdVjHnvCweLMQRViwQ3e6YzJ2oGoNHWFzIC3UmhmssUiZCvG5b9FLZClDsH3nPJRDT2fmEqpioxeM1elhiZAZAIXwosIegvhEvZAcf97Xt8o6kXLUYaoCxWmb7kfMLme3DwDuMOJwZDZD'),
+    'token' => env('FACEBOOK_TOKEN'),
 
     /*
     |--------------------------------------------------------------------------
@@ -22,7 +22,7 @@ return [
     | incoming requests from Facebook.
     |
     */
-    'app_secret' => env('863226ef5da43e24b057c02908946df4'),
+    'app_secret' => env('FACEBOOK_APP_SECRECT'),
 
     /*
     |--------------------------------------------------------------------------
@@ -32,7 +32,7 @@ return [
     | Your Facebook verification token, used to validate the webhooks.
     |
     */
-    'verification' => env('I_SAID_HAHA'),
+    'verification' => env('FACEBOOK_VERIFICATION'),
 
     /*
     |--------------------------------------------------------------------------
