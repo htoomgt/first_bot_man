@@ -2,6 +2,7 @@
 use App\Http\Controllers\BotManController;
 
 $botman = resolve('botman');
+$botman->verifyServices('I_SAID_HAHA');
 
 $botman->hears('Hi', function ($bot) {
     $bot->reply('Hello!');
