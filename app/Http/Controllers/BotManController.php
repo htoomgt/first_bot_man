@@ -21,16 +21,7 @@ class BotManController extends Controller
 
 
         $botman->listen();
-        $fbCallBack = request()->all();
-
-        if($fbCallBack['text'] == "get_started"){
-
-            BotMan::reply(ButtonTemplate::create('Please kindly choose Language you want to use.'))
-                ->addButton(ElementButton::create('English')
-                    ->type('postback')
-                    ->payload('lang_eng_chosen')
-                );
-        }
+        
     }
 
     /**
