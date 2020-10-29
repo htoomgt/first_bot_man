@@ -21,7 +21,7 @@ class BotManController extends Controller
 
 
         $botman->listen();
-        
+
     }
 
     /**
@@ -42,7 +42,8 @@ class BotManController extends Controller
     }
 
     public function messengerGetStarted(BotMan $bot){
-        $this->getStartedTemplate($bot);
+//        $this->getStartedTemplate($bot);
+        $bot->reply('You have chosen English language');
 
     }
 
