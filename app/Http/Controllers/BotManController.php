@@ -42,6 +42,19 @@ class BotManController extends Controller
     }
 
     public function messengerGetStarted(BotMan $bot){
+        $bot->reply(ButtonTemplate::create('Do you want to know more about BotMan?')
+            ->addButton(ElementButton::create('Tell me more')
+                ->type('postback')
+                ->payload('lang_eng_chosen')
+            )
+            ->addButton(ElementButton::create('Show me the docs')
+                ->url('http://botman.io/')
+            )
+        );
+
+    }
+
+    private function getStartedTemplate(BotMan $bot){
         $bot->reply(ButtonTemplate::create('Please kindly choose language you want to use!')
             ->addButton(
                 ElementButton::create('🇬🇧 English')->payload('lang_eng_chosen')->type('postback')
@@ -53,22 +66,5 @@ class BotManController extends Controller
                 ElementButton::create('🇲🇲 Myanmar Zawgyi')->payload('lang_mm_zawgyi_chosen')->type('postback')
             )
         );
-
-    }
-
-    private function getStartedTemplate(BotMan $bot){
-        $bot->reply(ButtonTemplate::create('Please kindly choose Language you want to use.'))
-            ->addButton(ElementButton::create('English')
-                ->type('postback')
-                ->payload('lang_eng_chosen')
-            )
-            ->addButton(ElementButton::create('မြန်မာ unicode')
-                ->type('postback')
-                ->payload('lang_mm_unicode_chosen')
-            )
-            ->addbutton(ElementButton::crate('ျမန္မာ zawgyi')
-                ->type('postback')
-                ->payload('lang_mm_zawgyi_chosen')
-            );
     }
 }
