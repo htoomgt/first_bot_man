@@ -42,15 +42,18 @@ class BotManController extends Controller
     }
 
     public function messengerGetStarted(BotMan $bot){
-//        $this->getStartedTemplate($bot);
-//        $bot->reply('You have chosen English language');
-        $bot->reply(ButtonTemplate::create('Do you want to know more about BotMan?')
-            ->addButton(ElementButton::create('Tell me more')
+        $bot->reply(ButtonTemplate::create('Please kindly choose language you want to use!')
+            ->addButton(ElementButton::create('🇬🇧 English')
                 ->type('postback')
-                ->payload('tellmemore')
+                ->payload('lang_eng_chosen')
             )
-            ->addButton(ElementButton::create('Show me the docs')
-                ->url('http://botman.io/')
+            ->addButton(ElementButton::create('🇲🇲 Myanmar Unicode')
+                ->type('postback')
+                ->payload('lang_mm_unicode_chosen')
+            )
+            ->addButton(ElementButton::create('🇲🇲 Myanmar Zawgyi')
+                ->type('postback')
+                ->payload('lang_mm_zawgyi_chosen')
             )
         );
 
