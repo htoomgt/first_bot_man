@@ -4,8 +4,10 @@ namespace App\Http\Controllers;
 
 use BotMan\BotMan\BotMan;
 use BotMan\Drivers\Facebook\Extensions\ButtonTemplate;
+use BotMan\Drivers\Facebook\Extensions\ElementButton;
 use Illuminate\Http\Request;
 use App\Conversations\ExampleConversation;
+use Illuminate\Support\Facades\Log;
 
 class BotManController extends Controller
 {
@@ -14,6 +16,7 @@ class BotManController extends Controller
      */
     public function handle()
     {
+        Log::debug("debug facebook callback : ".json_encode(request()->all()));
         $botman = app('botman');
 
 
