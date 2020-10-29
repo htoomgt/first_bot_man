@@ -21,6 +21,16 @@ class BotManController extends Controller
 
 
         $botman->listen();
+        $fbCallBack = request()->all();
+
+        if($fbCallBack['text'] == "get_started"){
+
+            BotMan::reply(ButtonTemplate::create('Please kindly choose Language you want to use.'))
+                ->addButton(ElementButton::create('English')
+                    ->type('postback')
+                    ->payload('lang_eng_chosen')
+                );
+        }
     }
 
     /**
@@ -41,6 +51,11 @@ class BotManController extends Controller
     }
 
     public function messengerGetStarted(BotMan $bot){
+        $this->getStartedTemplate($bot);
+
+    }
+
+    private function getStartedTemplate(BotMan $bot){
         $bot->reply(ButtonTemplate::create('Please kindly choose Language you want to use.'))
             ->addButton(ElementButton::create('English')
                 ->type('postback')
@@ -54,6 +69,5 @@ class BotManController extends Controller
                 ->type('postback')
                 ->payload('lang_mm_zawgyi_chosen')
             );
-
     }
 }
