@@ -3,9 +3,12 @@
 namespace App\Http\Controllers;
 
 use BotMan\BotMan\BotMan;
+use BotMan\BotMan\Messages\Incoming\Answer;
 use BotMan\BotMan\Messages\Outgoing\Actions\Button;
+use BotMan\BotMan\Messages\Outgoing\Question;
 use BotMan\Drivers\Facebook\Extensions\ButtonTemplate;
 use BotMan\Drivers\Facebook\Extensions\ElementButton;
+use Illuminate\Foundation\Inspiring;
 use Illuminate\Http\Request;
 use App\Conversations\ExampleConversation;
 use Illuminate\Support\Facades\Log;
@@ -43,13 +46,24 @@ class BotManController extends Controller
     }
 
     public function messengerGetStarted(BotMan $bot){
-        $bot->reply(ButtonTemplate::create('Please kindly choose language you want to use!')
+        $question = Question::create("Huh - you woke me up. What do you need?")
+            ->fallback('Unable to ask question')
+            ->callbackId('ask_reason')
             ->addButtons([
-                Button::create('🇬🇧 English')->value('lang_eng_chosen'),
-                Button::create('🇲🇲 Myanmar Unicode')->value('lang_mm_unicode_chosen'),
-                Button::create('🇲🇲 Myanmar Zawgyi')->value('lang_mm_zawgyi_chosen')
-            ])
-        );
+                Button::create('Tell a joke')->value('joke'),
+                Button::create('Give me a fancy quote')->value('quote'),
+            ]);
+
+        return $this->ask($question, function (Answer $answer) {
+            if ($answer->isInteractiveMessageReply()) {
+                if ($answer->getValue() === 'joke') {
+                    $joke = json_decode(file_get_contents('http://api.icndb.com/jokes/random'));
+                    $this->say($joke->value->joke);
+                } else {
+                    $this->say(Inspiring::quote());
+                }
+            }
+        });
 
     }
 
