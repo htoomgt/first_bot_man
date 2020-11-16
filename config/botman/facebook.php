@@ -74,7 +74,7 @@ return [
     | See https://developers.facebook.com/docs/messenger-platform/reference/messenger-profile-api/persistent-menu/#example
     |
     */
-    'persistent_menu' => [
+    /*'persistent_menu' => [
         [
             'locale' => 'default',
             'composer_input_disabled' => 'true',
@@ -96,6 +96,22 @@ return [
                     'url' => 'http://botman.io',
                     'webview_height_ratio' => 'full',
                 ],
+            ],
+        ],
+    ],*/
+
+    'persistent_menu' => [
+        [
+            'locale' => 'default',
+            'composer_input_disabled' => 'false',
+            'call_to_actions' => [
+                [
+                    'type' => 'postback',
+                    'title' => 'Menu️',
+                    'payload' => 'GET_STARTED'
+                ],
+
+
             ],
         ],
     ],

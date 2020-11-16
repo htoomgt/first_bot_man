@@ -87,7 +87,7 @@ class BotManController extends Controller
 
         $bot->reply(utf8_encode($jokeText));
 
-        $bot->reply(ButtonTemplate::create("Wanna get another one?")
+        $bot->reply(ButtonTemplate::create("Wanna get another joke?")
             ->addButton(
                 ElementButton::create('😜 Get another joke')->type('postback')->payload('get_a_joke')
             )
