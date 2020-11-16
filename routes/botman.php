@@ -22,4 +22,8 @@ $botman->hears('lang_mm_zawgyi_chosen', function($bot){
     $bot->reply('You have chosen Myanmar language with zaw font display');
 });
 
+$botman->hears('peter', function ($bot){
+    $bot->reply("Hello peter! How are you?");
+});
+
 $botman->hears('Start conversation', BotManController::class.'@startConversation');
