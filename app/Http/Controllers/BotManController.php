@@ -84,7 +84,7 @@ class BotManController extends Controller
     {
         $joke = json_decode(file_get_contents('http://api.icndb.com/jokes/random'));
 
-        $bot->reply($joke);
+        $bot->reply(utf8_encode($joke));
 
         $bot->reply(ButtonTemplate::create("Wanna get another one?")
             ->addButton(
