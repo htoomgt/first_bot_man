@@ -63,4 +63,14 @@ class BotManController extends Controller
             )
         );
     }
+
+    public function hearEngLan(BotMan $bot)
+    {
+        $bot->reply(ButtonTemplate::create('You have Eng Lang. Now you request some joke')
+            ->addButton(
+                ElementButton::create('😜 Get a joke')->type('postback')->payload('get_a_joke')
+            )
+
+        );
+    }
 }

@@ -10,9 +10,8 @@ $botman->hears('Hi', function ($bot) {
 
 $botman->hears('GET_STARTED', BotManController::class.'@messengerGetStarted');
 
-$botman->hears('lang_eng_chosen', function($bot){
-    $bot->reply('You have chosen English language');
-});
+$botman->hears('lang_eng_chosen', BotManController::class."@hearEngLan");
+
 
 $botman->hears('lang_mm_unicode_chosen', function($bot){
     $bot->reply('You have chosen Myanmar language with unicode font display');
@@ -27,3 +26,7 @@ $botman->hears('peter', function ($bot){
 });
 
 $botman->hears('Start conversation', BotManController::class.'@startConversation');
+
+$botman->hears('get_a_joke', function($bot){
+    $bot->reply("Say ha ha any way :P");
+});
