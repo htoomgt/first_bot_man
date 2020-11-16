@@ -64,11 +64,29 @@ class BotManController extends Controller
         );
     }
 
+    /**
+     * @param BotMan $bot
+     */
     public function hearEngLan(BotMan $bot)
     {
         $bot->reply(ButtonTemplate::create('You have Eng Lang. Now you request some joke')
             ->addButton(
                 ElementButton::create('😜 Get a joke')->type('postback')->payload('get_a_joke')
+            )
+
+        );
+    }
+
+    /**
+     * @param BotMan $bot
+     */
+    public function generateJoke(BotMan $bot)
+    {
+        $joke = json_decode(file_get_contents('http://api.icndb.com/jokes/random'));
+
+        $bot->reply(ButtonTemplate::create($joke)
+            ->addButton(
+                ElementButton::create('😜 Get another joke')->type('postback')->payload('get_a_joke')
             )
 
         );

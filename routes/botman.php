@@ -27,6 +27,4 @@ $botman->hears('peter', function ($bot){
 
 $botman->hears('Start conversation', BotManController::class.'@startConversation');
 
-$botman->hears('get_a_joke', function($bot){
-    $bot->reply("Say ha ha any way :P");
-});
+$botman->hears('get_a_joke', BotManController::class."@generateJoke");
